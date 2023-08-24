@@ -14,11 +14,13 @@ nltk.download('averaged_perceptron_tagger')
 nltk.download('punkt')
 nltk.download('vader_lexicon')
 
-
+# importing csv
 amazon_reviews = pd.read_csv('amazon_reviews.csv')
 amazon_review_text_column = amazon_reviews['reviews.text'].tolist()
 
-
+# initializing lists for later
+review_sentiments = []
+review_keywords = []
 
 
 def analyze_sentiment(amazon_review_text_column):
@@ -39,14 +41,17 @@ def extract_keywords(amazon_review_text_column):
 
 def main():
     for idx, review in enumerate(amazon_review_text_column, start=1):
-        print(f"Review {idx}: {amazon_review_text_column}")
+        #print(f"Review {idx}: {amazon_review_text_column}")
         sentiment = analyze_sentiment(amazon_review_text_column)
-        print(f"Sentiment: {sentiment}")
+        #print(f"Sentiment: {sentiment}")
         
         keywords = extract_keywords(amazon_review_text_column)
-        print(f"Keywords: {', '.join(keywords)}")
+        #print(f"Keywords: {', '.join(keywords)}")
         
-        print("=" * 30)
+        #print("=" * 30)
+        
+        review_sentiments.append(sentiment)
+        review_keywords.append(keywords)
 
 if __name__ == "__main__":
     main()
