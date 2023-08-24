@@ -16,7 +16,9 @@ nltk.download('vader_lexicon')
 
 
 amazon_reviews = pd.read_csv('amazon_reviews.csv')
-amazon_review_text_column = amazon_reviews['reviews.text']
+amazon_review_text_column = amazon_reviews['reviews.text'].tolist()
+
+
 
 
 def analyze_sentiment(amazon_review_text_column):
